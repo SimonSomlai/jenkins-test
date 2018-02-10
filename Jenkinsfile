@@ -3,7 +3,7 @@ pipeline {
   stages {
      stage('Checkout & Installation') {
       steps {
-        echo 'Building..'
+        echo 'Checkout & Installation..'
         sh '''npm i 
         npm update'''
       }
@@ -11,10 +11,7 @@ pipeline {
     stage('Testing') {
       steps {
         echo 'Testing..'
-        sh '''npm run test a
-              q
-        '''
-
+        sh 'npm run test'
       }
     }
     stage('Building') {
@@ -23,7 +20,7 @@ pipeline {
         sh 'npm run build'
       }
     }
-    stage('3 - Deploy') {
+    stage('Deploying') {
       steps {
         echo 'Deploying....'
       }
