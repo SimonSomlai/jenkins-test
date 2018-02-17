@@ -22,7 +22,10 @@ pipeline {
     }
     stage('Deploying') {
       steps {
-        echo 'Deploying....'
+        sh 'zip -r9 app.zip build server.js'
+        withCredentials([file(credentialsId: '7ab23e32-5fa0-40f7-96e6-8a4176415b67', variable: 'SECRET_FILE')]) {
+          echo $SECRET_FILE
+        }
       }
     }
   }
