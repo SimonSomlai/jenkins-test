@@ -25,7 +25,7 @@ pipeline {
         sh 'zip -r9 app.zip build server.js'
         withCredentials([file(credentialsId: '7ab23e32-5fa0-40f7-96e6-8a4176415b67', variable: 'SECRET_FILE')]) {
           sh "scp -i ${SECRET_FILE} app.zip ec2-user@54.245.159.220"
-          sh "ssh -tt ${SECRET_FILE} ec2-user@54.245.159.220"
+          sh "ssh -i ${SECRET_FILE} ec2-user@ec2-54-245-159-220.us-west-2.compute.amazonaws.com"
           sh "unzip app.zip"
           sh "ls"
         }
